@@ -26,7 +26,7 @@ ch_id = country_model.search([('name', '=', 'Switzerland')])[0]
 
 print(ch_id);
 
-## works create user
+## works !!! create user
 #partner_model = connection.get_model('res.partner')
 #a_turner = partner_model.create({
 # 	'name': 'okok okok',
@@ -38,9 +38,11 @@ print(ch_id);
 #   'email': 'ok.0k0k@uweb.ch'
 #     })
 
-##end works create user
+##end create user
 
-#partner_model = connection.get_model('base.automation')
+## code qui est destinée à fonctionner que dans l'interface d'automatisation de Odoo 13
+##partner_model = connection.get_model('base.automation')
+##create user
 
 #sudoenv['mail.message'].sudo().create({
 # env = partner_model.create({
@@ -56,6 +58,8 @@ print(ch_id);
 #     'res_id': env.ref('modulename.mail.channel_all_employees').id, ### here add the channel you created.
 # })
 #
+
+## ##send notification
 # env['mail.message'].create({'message_type': "notification",
 #                                  "subtype": env.ref("mail.mt_comment").id,
 #                                  'body': "Message body",
@@ -63,6 +67,8 @@ print(ch_id);
 #                                  'needaction_partner_ids': [(2, 2)], #
 #                                  'res_id': 1, # id du mail.channel
 #                                  })
+
+## fin du code qui est destinée à fonctionner que dans l'interface d'automatisation de Odoo 13
 
 
 partner_model = connection.get_model('mail.channel')

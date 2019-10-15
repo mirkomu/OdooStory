@@ -24,21 +24,46 @@ print("test si nous avons les droits d'acces")
 
 #print (id)
 
+##recherche de l'id du contact 
 #print("search a record")
 #models.execute_kw(db, uid, password,
 #    print('res.partner', 'search',
-#    ['name', '=', "Müller Mirko"])) #non marche pas
+#    ['name', '=', "Müller Mirko"])) #non marche pas (pas grave nous testion avec un id codée en dure)
 
-
+#test simple
+'''
 print("create notification")
 id = models.execute_kw(db, uid, password, 'mail.channel', 'message_post', [{
 #id=models.execute_kw(db, uid, password, 'mail.channel', 'create', [{
     'subtype': "mail.mt_comment",
-    'body': "my notification to you",
     # partner to whom you send notification, 49 = res.partner from testUser, res.users =>6, 1=> res.partner (Müller Mirko)
-    #'partner_ids': [(49,1)]
+    'partner_ids': [(49,1)],
+    'body': "my notification to you"
     # 'subject': "Message subject",
-    # 'model': "mail.channel",
+    ## 'model': "mail.channel",
+}])
+'''
+
+#test avec args et kwargs
+print("create notification")
+id = models.execute_kw(db, uid, password, 'mail.channel', 'message_post', [{
+#id=models.execute_kw(db, uid, password, 'mail.channel', 'create', [{
+    'is_company': True,
+    'active':True,
+    'type': "contact",
+    'lang': "en_US",
+    'category_id': [(6, False, [])],
+    'lang': "en_US",
+    'tz': "false",
+    'allowed_ids': [1],
+    'uis': 1,
+    'default_is_company': True,
+    'subtype': "mail.mt_comment",
+    # partner to whom you send notification, 49 = res.partner from testUser, res.users =>6, 1=> res.partner (Müller Mirko)
+    'partner_ids': [(49,1)],
+    'body': "my notification to you"
+    ## 'subject': "Message subject",
+    ## 'model': "mail.channel",
 }])
 
 
